@@ -1,1 +1,1 @@
-
+https://github.com/liatrio/spring-petclinic.git

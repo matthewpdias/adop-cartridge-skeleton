@@ -48,7 +48,7 @@ testJob.with{
     maskPasswords()
     sshAgent("adop-jenkins-master")
   }
-  triggers scmProvider.trigger(projectScmNamespace, skeletonAppgitRepo, "master")
+  triggers scmProvider.trigger(projectScmNamespace, testGitRepo, "master")
   steps {
     shell('''
     |#An execute shell step, just for example purposes

@@ -37,7 +37,6 @@ testJob.with{
     artifactDaysToKeep(logRotatorArtifactsNumDaysToKeep)
     artifactNumToKeep(logRotatorArtifactsNumToKeep)
   }
-  scm scmProvider.get("". testGitRepo, "*/master", "adop-jenkins-master", null)
   environmentVariables {
       env('WORKSPACE_NAME',workspaceFolderName)
       env('PROJECT_NAME',projectFolderName)
@@ -48,7 +47,6 @@ testJob.with{
     maskPasswords()
     sshAgent("adop-jenkins-master")
   }
-  triggers scmProvider.trigger(projectScmNamespace, testGitRepo, "master")
   steps {
     shell('''
     |#An execute shell step, just for example purposes

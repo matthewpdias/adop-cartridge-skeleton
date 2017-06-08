@@ -37,7 +37,7 @@ testJob.with{
     artifactDaysToKeep(logRotatorArtifactsNumDaysToKeep)
     artifactNumToKeep(logRotatorArtifactsNumToKeep)
   }
-  scm scmProvider.get(projectScmNamespace, testGitRepo, "*/master", "adop-jenkins-master", null)
+  scm scmProvider.get(testGitRepo, "*/master", "adop-jenkins-master", null)
   environmentVariables {
       env('WORKSPACE_NAME',workspaceFolderName)
       env('PROJECT_NAME',projectFolderName)

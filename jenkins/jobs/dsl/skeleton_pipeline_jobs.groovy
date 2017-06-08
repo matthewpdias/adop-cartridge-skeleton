@@ -19,7 +19,7 @@ def logRotatorArtifactsNumDaysToKeep = 7
 def logRotatorArtifactsNumToKeep = 7
 
 // Jobs
-def testJob = freeStyleJob(projectFolderName + "/Skeleton_Test_Job")
+def testJob = mavenJob(projectFolderName + "/Skeleton_Maven_Job")
 
 // Views
 
@@ -47,12 +47,12 @@ testJob.with{
     maskPasswords()
     sshAgent("adop-jenkins-master")
   }
-  steps {
-    shell('''
-    |#An execute shell step, just for example purposes
-    |
-    |echo This job was cartridge loaded!
-    |
-    |'''.stripMargin())
+  scm {
+    github('matthewpdias/spring-petclinic','master')
   }
+  triggers {
+    githubPush()
+  }
+  jdk('Java 8')
+  goals('clean install')
 }
